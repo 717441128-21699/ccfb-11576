@@ -1,0 +1,419 @@
+:root {
+  --bg: #0f1620;
+  --panel: #18222f;
+  --panel-2: #1f2c3c;
+  --border: #2c3d52;
+  --text: #e6edf5;
+  --muted: #8fa3b8;
+  --accent: #4f9cf9;
+  --good: #37c97f;
+  --bad: #f2635f;
+  --warn: #f0b429;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+}
+
+.app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px 40px;
+}
+
+.topbar {
+  padding: 18px 0 12px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 20px;
+}
+
+.topbar h1 {
+  margin: 0 0 12px;
+  font-size: 22px;
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+}
+
+.tabs button {
+  background: var(--panel);
+  color: var(--muted);
+  border: 1px solid var(--border);
+  padding: 8px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.tabs button.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px;
+  margin-bottom: 18px;
+}
+
+.card h2 {
+  margin: 0 0 12px;
+  font-size: 17px;
+}
+
+.card h3 {
+  margin: 16px 0 8px;
+  font-size: 15px;
+  color: var(--accent);
+}
+
+.hint {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+code {
+  background: var(--panel-2);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+textarea {
+  width: 100%;
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  padding: 12px;
+  font-family: 'Cascadia Code', Consolas, monospace;
+  font-size: 13px;
+  resize: vertical;
+}
+
+.button-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+button {
+  background: var(--panel-2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+button:hover:not(:disabled) {
+  filter: brightness(1.12);
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.status {
+  color: var(--muted);
+  margin-bottom: 0;
+}
+
+.error-banner {
+  background: rgba(242, 99, 95, 0.15);
+  border: 1px solid var(--bad);
+  color: #ffb4b1;
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.empty {
+  background: var(--panel);
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  padding: 40px;
+  text-align: center;
+  color: var(--muted);
+}
+
+.card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.method-toggle {
+  display: flex;
+  gap: 18px;
+}
+
+.method-toggle label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+table.grid {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+table.grid th,
+table.grid td {
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+table.grid th {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+td.rank {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+td.total {
+  font-weight: 700;
+}
+
+td.pos {
+  color: var(--good);
+}
+
+td.neg {
+  color: var(--bad);
+}
+
+/* ---------- 复盘 ---------- */
+.controls {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.controls select {
+  background: var(--panel-2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 10px;
+  margin-left: 6px;
+}
+
+.busy {
+  color: var(--warn);
+}
+
+.review-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 18px;
+}
+
+@media (max-width: 960px) {
+  .review-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.trick-count {
+  font-size: 15px;
+  margin-bottom: 14px;
+}
+
+.done {
+  color: var(--good);
+}
+
+.seats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.seat {
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  min-height: 130px;
+  position: relative;
+}
+
+.seat.turn {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+.seat-name {
+  color: var(--muted);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.seat.turn .seat-name {
+  color: var(--accent);
+}
+
+.suit-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+
+.suit-symbol {
+  width: 16px;
+  font-weight: 700;
+  color: var(--warn);
+}
+
+.playing-card {
+  position: relative;
+  min-width: 30px;
+  padding: 6px 7px;
+  background: #f4f6fa;
+  color: #1a2433;
+  border: 1px solid #c6d0dd;
+  border-radius: 6px;
+  font-weight: 700;
+}
+
+.playing-card.best {
+  background: var(--good);
+  color: #08231a;
+  border-color: var(--good);
+  box-shadow: 0 0 8px rgba(55, 201, 127, 0.6);
+}
+
+.playing-card.losing {
+  background: #f6d7d6;
+  border-color: var(--bad);
+}
+
+.loss-badge {
+  position: absolute;
+  top: -8px;
+  right: -6px;
+  background: var(--bad);
+  color: #fff;
+  font-size: 10px;
+  border-radius: 8px;
+  padding: 1px 5px;
+}
+
+.played-now {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: var(--accent);
+  color: #fff;
+  padding: 3px 9px;
+  border-radius: 6px;
+  font-weight: 700;
+}
+
+.assess-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.assess-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 10px;
+  border-radius: 7px;
+  margin-bottom: 5px;
+  background: var(--panel-2);
+}
+
+.assess-list li.best {
+  border-left: 3px solid var(--good);
+}
+
+.assess-list li.bad {
+  border-left: 3px solid var(--bad);
+  opacity: 0.85;
+}
+
+.card-name {
+  font-weight: 700;
+  min-width: 38px;
+}
+
+.tricks {
+  color: var(--muted);
+  flex: 1;
+}
+
+.tag {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+.tag-best {
+  background: rgba(55, 201, 127, 0.2);
+  color: var(--good);
+}
+
+.tag-bad {
+  background: rgba(242, 99, 95, 0.2);
+  color: var(--bad);
+}
+
+.play-log {
+  margin: 0;
+  padding-left: 20px;
+  max-height: 240px;
+  overflow-y: auto;
+  font-size: 13px;
+}
+
+.play-log li {
+  padding: 3px 0;
+}
+
+.play-log li.ok {
+  color: var(--good);
+}
+
+.play-log li.mistake {
+  color: var(--bad);
+}

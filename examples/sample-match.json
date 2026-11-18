@@ -1,0 +1,30 @@
+{
+  "scoring": "matchpoint",
+  "boards": [
+    {
+      "boardId": 1, "tableId": 1, "nsPairId": 1, "ewPairId": 2, "vul": 0,
+      "contract": { "level": 3, "trump": 4, "declarer": 0, "doubled": 0 },
+      "tricks": 9
+    },
+    {
+      "boardId": 1, "tableId": 2, "nsPairId": 3, "ewPairId": 4, "vul": 0,
+      "contract": { "level": 3, "trump": 4, "declarer": 2, "doubled": 0 },
+      "tricks": 10
+    },
+    {
+      "boardId": 1, "tableId": 3, "nsPairId": 5, "ewPairId": 6, "vul": 0,
+      "contract": { "level": 3, "trump": 4, "declarer": 0, "doubled": 1 },
+      "tricks": 7
+    },
+    {
+      "boardId": 2, "tableId": 1, "nsPairId": 1, "ewPairId": 2, "vul": 1,
+      "contract": { "level": 4, "trump": 2, "declarer": 0, "doubled": 0 },
+      "tricks": 10
+    },
+    {
+      "boardId": 2, "tableId": 2, "nsPairId": 3, "ewPairId": 4, "vul": 1,
+      "contract": { "level": 4, "trump": 2, "declarer": 2, "doubled": 0 },
+      "tricks": 9
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>桥牌俱乐部 · 复式赛计分与双明手复盘</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header>
+    <h1>桥牌俱乐部工具</h1>
+    <p class="subtitle">复式赛计分 · 双明手分析 · 逐墩复盘</p>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab active" data-tab="deal">牌局录入</button>
+    <button class="tab" data-tab="dds">双明手</button>
+    <button class="tab" data-tab="review">复盘</button>
+    <button class="tab" data-tab="scoring">计分规则</button>
+  </nav>
+
+  <main>
+    <!-- 牌局录入 -->
+    <section id="panel-deal" class="panel active">
+      <h2>牌局录入（PBN 格式）</h2>
+      <p class="hint">格式：<code>N: S.H.D.C 四家空格分隔</code>，花色顺序为 黑桃.红桃.方块.草花，<code>-</code> 表示空门。</p>
+      <textarea id="pbnInput" rows="4" spellcheck="false"></textarea>
+      <div class="btn-row">
+        <button id="loadSample">载入示例</button>
+        <button id="parseDeal" class="primary">解析牌局</button>
+      </div>
+      <div id="dealStatus" class="status"></div>
+      <div id="handsView" class="hands-grid"></div>
+    </section>
+
+    <!-- 双明手 -->
+    <section id="panel-dds" class="panel">
+      <h2>双明手最佳墩数（20 种定约）</h2>
+      <p class="hint">每种将牌（♣♦♥♠NT）× 四个庄家，共 20 个结果。数字为该庄家双明手能拿到的墩数。</p>
+      <div class="btn-row">
+        <button id="runDds" class="primary">主线程计算</button>
+        <button id="runDdsWorker">Web Worker 计算（不卡顿）</button>
+      </div>
+      <div id="ddsStatus" class="status"></div>
+      <div id="ddsTable"></div>
+    </section>
+
+    <!-- 复盘 -->
+    <section id="panel-review" class="panel">
+      <h2>逐墩复盘</h2>
+      <div class="btn-row">
+        <label>将牌
+          <select id="reviewTrump">
+            <option value="0">♣ 草花</option>
+            <option value="1">♦ 方块</option>
+            <option value="2">♥ 红桃</option>
+            <option value="3">♠ 黑桃</option>
+            <option value="4" selected>NT 无将</option>
+          </select>
+        </label>
+        <label>首引人
+          <select id="reviewLeader">
+            <option value="0">N 北</option>
+            <option value="1" selected>E 东</option>
+            <option value="2">S 南</option>
+            <option value="3">W 西</option>
+          </select>
+        </label>
+        <button id="reviewStart" class="primary">开始复盘</button>
+      </div>
+      <div id="reviewInfo" class="status"></div>
+      <div id="reviewHands" class="hands-grid"></div>
+      <h3>出牌流水</h3>
+      <div id="trickLog" class="trick-log"></div>
+      <p class="hint">
+        <span class="legend best-leg">绿色</span> = 当前最佳出法；
+        <span class="legend bad-leg">红色</span> = 会丢墩，悬停可见具体丢墩数。
+      </p>
+    </section>
+
+    <!-- 计分规则说明 -->
+    <section id="panel-scoring" class="panel">
+      <h2>计分规则（WBF 标准复式赛）</h2>
+      <ul class="rules">
+        <li>墩分：低花 ♣♦ 每墩 20，高花 ♥♠ 每墩 30，NT 首墩 40、其后每墩 30。</li>
+        <li>成局线：墩分 ≥ 100。无局成局奖 300、有局 500；未成局部分定约奖 50。</li>
+        <li>满贯：小满贯无局 500 / 有局 750；大满贯无局 1000 / 有局 1500。</li>
+        <li>宕分：未加倍每宕一墩无局 50、有局 100；加倍/再加倍按专门罚分表。</li>
+        <li>排名支持比赛分（Matchpoint）、平均 IMP（Butler）与队际 IMP。</li>
+      </ul>
+      <p class="hint">计分与排名的完整逻辑与测试见 <code>src/scoring/</code>，可通过导入成绩 JSON 批量处理。</p>
+    </section>
+  </main>
+
+  <footer>双明手引擎：Alpha-Beta + 置换表 + 等牌连张剪枝 + MTD(f)/PVS，纯 TypeScript 实现。</footer>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
